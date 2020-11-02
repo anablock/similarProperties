@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Similar Properties" icon-name="custom:custom85">
+        <div class="slds-m-around_medium">
+            <ul class="slds-list_vertical slds-has-dividers_top-space">
+                <template for:each={props.data} for:item="item" if:true={props.data}>
+                    <li key={item.Id} class="slds-list__item">
+                        {item.Name}
+                    </li>
+                </template>
+                <template if:true={props.error}>
+                    <li class="slds-list__item">
+                        <h3 class="slds-text-heading_small slds-text-color_error">
+                            {props.error}
+                        </h3>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
