@@ -11,7 +11,7 @@ public with sharing class SimilarPropertyController {
     private static List<Property__c> getSimilarProperties (Id recordId, Decimal priceRange, Decimal price ) {
         Decimal range;
         if (priceRange == null) {
-            range = 100000;
+            range = 100000000;
         } else {
             range = priceRange;
         }

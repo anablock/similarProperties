@@ -4,7 +4,7 @@
             <ul class="slds-list_vertical slds-has-dividers_top-space">
                 <template for:each={props.data} for:item="item" if:true={props.data}>
                     <li key={item.Id} class="slds-list__item">
-                        {item.Name}
+                        <c-similar-Property item={item}></c-similar-Property>
                     </li>
                 </template>
                 <template if:true={props.error}>
