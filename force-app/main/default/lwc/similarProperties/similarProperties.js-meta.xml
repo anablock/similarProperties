@@ -3,6 +3,7 @@
     <apiVersion>50.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>Similar Properties</masterLabel>
+    <description>This component searches for similar properties.</description>
     <targets>
         <target>lightning__AppPage</target>
         <target>lightning__RecordPage</target>
