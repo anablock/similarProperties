@@ -16,7 +16,7 @@ public with sharing class SimilarPropertyController {
             range = priceRange;
         }
         return [
-            SELECT Id, Name, Beds__c, Baths__c, Price__c, Broker__c, Status__c, Thumbnail__c
+            SELECT Id, Name, Beds__c, Baths__c, Price__c, Broker__c, Status__c
             FROM Property__c WHERE Id != :recordId AND Price__c > :price - range AND Price__c < :price + range
         ];
     }
