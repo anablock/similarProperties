@@ -39,9 +39,12 @@ export default class SimilarProperties extends LightningElement {
         }
     }
     
+    // $price is reactive causes the method to be called when its value changes.
     @wire(findProperties, { 
         recordId: '$recordId',
-        priceRange: '100000'
+        priceRange: '100000',
+        price: '$price',
+        beds: '$beds'
     })
     props
 
@@ -55,5 +58,14 @@ export default class SimilarProperties extends LightningElement {
         })
     }
 
+    // Releases a message context associated with LWC library 
+    // and unsubscribes all associated subscriptions. 
+    disconnectedCallback() {
+        releaseMessageContext(this.context);
+    }
+
+    refreshSelection() {
+        refreshApex(this.wiredRecords);
+    }
     
 }

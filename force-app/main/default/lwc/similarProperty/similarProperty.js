@@ -9,7 +9,6 @@ export default class SimilarProperty extends NavigationMixin(LightningElement) {
 
     @track editMode = false;
     // create a message context
-    @track context = createMessageContext();
     context = createMessageContext();
 
     @wire(CurrentPageReference) pageRef;

@@ -20,6 +20,11 @@
                     <lightning-record-view-form object-api-name="Property__c"
                                                 record-id={item.Id}>
                         <lightning-layout multiple-rows>
+                            <template if:true={record}>
+                                <lightning-layout-item size="6">
+                                    <lightning-output-field field-name="Name"></lightning-output-field>
+                                </lightning-layout-item>
+                            </template>
                             <lightning-layout-item size="6">
                                 <lightning-output-field field-name="Price__c"></lightning-output-field>
                             </lightning-layout-item>
@@ -44,6 +49,11 @@
                                                 onsuccess={handleSuccess}
                                                 onerror={handleError}>
                         <lightning-layout multiple-rows>
+                            <template if:true={record}>
+                                <lightning-layout-item size="6">
+                                    <lightning-output-field field-name="Name"></lightning-output-field>
+                                </lightning-layout-item>
+                            </template>
                             <lightning-layout-item size="6">
                                 <lightning-input-field field-name="Price__c"></lightning-input-field>
                             </lightning-layout-item>
