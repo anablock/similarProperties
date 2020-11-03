@@ -1,7 +1,7 @@
 public with sharing class SimilarPropertyController {
     
     @AuraEnabled(cacheable=true)
-    public static List<Property__c> findProperties (Id recordId, Decimal priceRange) {
+    public static List<Property__c> findProperties (Id recordId, String searchCriteria, Decimal beds, Decimal price, Decimal priceRange) {
         List<Property__c> property = [SELECT Price__c FROM Property__c WHERE Id=:recordId];
         Decimal propertyPrice = property[0].Price__c;
         List<Property__c> similarProperties = getSimilarProperties(recordId, priceRange, propertyPrice);

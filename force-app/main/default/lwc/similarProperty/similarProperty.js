@@ -1,17 +1,22 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { NavigationMixin, CurrentPageReference } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { publish, createMessageContext, releaseMessageContext } from 'lightning/messageService';
+import MESSAGE_CHANNEL from "@salesforce/messageChannel/Properties__c";
 
 export default class SimilarProperty extends NavigationMixin(LightningElement) {
     @api item;
 
     @track editMode = false;
+    // create a message context
+    @track context = createMessageContext();
+    context = createMessageContext();
 
     @wire(CurrentPageReference) pageRef;
 
     navigateToRecord() {
         this[NavigationMixin.Navigate]({
-            type: 'lightningCommunity__Page',
+            type: 'standard__recordPage',
             attributes: {
                 recordId: this.item.Id,
                 objectApiName: 'Property__c',
@@ -32,6 +37,8 @@ export default class SimilarProperty extends NavigationMixin(LightningElement) {
         });
         this.dispatchEvent(evt);
         this.editMode = false;
+        // send a message to listeners subscribed to this channel
+        publish(this.context, MESSAGE_CHANNEL, this);
     }
 
     handleError() {
@@ -48,4 +55,5 @@ export default class SimilarProperty extends NavigationMixin(LightningElement) {
         this.editMode = false;
         event.preventDefault();
     }
+
 }
